@@ -1,234 +1,230 @@
-\documentclass[12pt,letterpaper]{report}
+%-------------------------
+% Resume in Latex
+% Author : Valentin Mitrofanov
+%------------------------
 
-\usepackage[T1]{fontenc} % output T1 font encoding (8-bit) for accented characters as single glyph
-\usepackage[strict,autostyle]{csquotes} % smart and nestable quote marks
-\usepackage[USenglish]{babel} % regionalize hyphens, quote marks, etc automatically
-\usepackage{microtype}% improve text appearance with kerning, etc
-\usepackage{datetime} % enable formatting of date output
-\usepackage{tabto}    % make nice tabbing
-\usepackage{hyperref} % enable hyperlinks and pdf metadata
-\usepackage{geometry} % manually set page margins
-\usepackage{enumitem} % enumerate with [resume] option
-\usepackage{titlesec} % allow custom section fonts
-\usepackage{setspace} % custom line spacing
-\usepackage[maxcitenames=6, minnames=3 ]{biblatex}
-\addbibresource[]{biblio.bib}
+\documentclass[letterpaper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[english,russian]{babel}
 
-% bold the name of specific author
-\usepackage{xstring}
-\usepackage{etoolbox}
-\newboolean{bold}
-\newcommand{\makeauthorsbold}[1]{%
-  \DeclareNameFormat{author}{%
-  \setboolean{bold}{false}%
-    \renewcommand{\do}[1]{\expandafter\ifstrequal\expandafter{\namepartfamily}{####1}{\setboolean{bold}{true}}{}}%
-    \docsvlist{#1}%
-    \ifthenelse{\value{listcount}=1}
-    {%
-      {\expandafter\ifthenelse{\boolean{bold}}{\mkbibbold{\namepartfamily\addcomma\addspace \namepartgiveni}}{\namepartfamily\addcomma\addspace \namepartgiveni}}%
-    }{\ifnumless{\value{listcount}}{\value{liststop}}
-      {\expandafter\ifthenelse{\boolean{bold}}{\mkbibbold{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni}}{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni}}%
-      {\expandafter\ifthenelse{\boolean{bold}}{\mkbibbold{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni\addcomma\isdot}}{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni\addcomma\isdot}}%
-      }
-    \ifthenelse{\value{listcount}<\value{liststop}}
-    {\addcomma\space}{}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+
+\input{glyphtounicode}
+
+% -------------------- FONT --------------------
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-1in} % Default was -.5in
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Subsection formatting
+\titleformat{\subsection}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{\hspace{-.15in}}{0em}{}[\color{black}\vspace{-8pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% -------------------- CUSTOM COMMANDS --------------------
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
   }
 }
-\makeauthorsbold{Luo, Zhirui}
 
-% what is your name?
-\newcommand{\myname}{Zhirui Luo}
-
-% select default typefaces
-\usepackage{ebgaramond} % document's serif typeface
-\usepackage{tgheros}    % document's sans serif typeface
-
-% how far to tab for list items with left-aligned date: different fonts need different widths
-\newcommand{\listtabwidth}{1.7cm}
-
-% define font to use as document's title
-\newcommand{\namefont}[1]{{\normalfont\bfseries\Huge{#1}}}
-
-% set section heading fonts and before/after spacing
-\SetTracking{encoding=*, family=\sfdefault}{30} % increase sans serif headings tracking
-\titleformat{\section}{\lsstyle\sffamily\small\bfseries\uppercase}{}{}{}{}
-\titlespacing{\section}{0pt}{30pt plus 4pt minus 4pt}{8pt plus 2pt minus 2pt}
-
-% set subsection heading fonts and before/after spacing
-\titleformat{\subsection}{\lsstyle\sffamily\footnotesize\bfseries}{}{}{}{}
-\titlespacing{\subsection}{0pt}{16pt plus 4pt minus 4pt}{4pt plus 2pt minus 2pt}
-
-% set page margins (assumes letter paper)
-\geometry{body={6.5in, 9.0in},
-    left=1.0in,
-    top=1.0in}
-
-% prevent paragraph indentation
-\setlength\parindent{0em}
-
-% set line spacing
-\setstretch{0.9}
-
-% define space between list items
-\newcommand{\listitemspace}{0.25em}
-
-% make unordered lists without bullets and use compact spacing
-\renewenvironment{itemize}
-{\begin{list}{}{\setlength{\leftmargin}{0em}
-                \setlength{\parskip}{0em}
-                \setlength{\itemsep}{\listitemspace}
-                \setlength{\parsep}{\listitemspace}}}
-{\end{list}}
-
-% make tabbed lists so content is left-aligned next to years
-\TabPositions{\listtabwidth}
-\newlist{tablist}{description}{3}
-\setlist[tablist]{leftmargin=\listtabwidth,
-    labelindent=0em,
-    topsep=0em,
-    partopsep=0em,
-    itemsep=\listitemspace,
-    parsep=\listitemspace,
-    font=\normalfont}
-
-% print only the month and year when using \today
-\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
-
-% define hyperlink appearance and metadata for pdf properties
-\hypersetup{
-    colorlinks  = true,
-    urlcolor    = black,
-    citecolor   = black,
-    linkcolor   = black,
-    pdfauthor   = {\myname},
-    pdfkeywords = {Deep Learning, Machine Learning, Smart Meter ,Social Computation},
-    pdftitle    = {\myname: Curriculum Vitae},
-    pdfsubject  = {Curriculum Vitae},
-    pdfpagemode = UseNone
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
 }
 
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\setlength{\footskip}{4.08003pt}
+
+% -------------------- START OF DOCUMENT --------------------
 \begin{document}
-    % \nobibliography*
-    \raggedright{}
 
-    % display your name as the document title
-    \namefont{\myname}
+% -------------------- HEADING--------------------
+\begin{flushright}
+  \vspace{-4pt}
+  \color{gray}
+  \item
+\end{flushright}
 
-    % affiliation and contact info blocks
-    \vspace{1em}
-    \begin{minipage}[t]{0.700\textwidth}
-        % current primary affiliation, left-aligned
-        Department of Computer Science and Engineering (CSE)\\
-        New Mexico Institute of Mining and Technology
-    \end{minipage}
-    \begin{minipage}[t]{0.295\textwidth}
-        % contact info details, right-aligned
-        \flushright{}
-        \href{mailto:zhirluo@gmail.com}{zhirluo@gmail.com} \\
-        +1 575 418 0064 \\
-        \href{https://zhiruiluo.github.io}{zhiruiluo.github.io}\\
-        \href{https://orcid.org/0000-0002-3121-2597}{orcid:0000-0002-3121-2597}
-    \end{minipage}
+\vspace{-7pt}
 
-    \section*{Education}
+\begin{center}
+\vspace{-7pt}
+    \textbf{\Huge \scshape Валентин Митрофанов} \\ \vspace{8pt}
+    \small 
+    \faIcon{github}
+    \href{https://github.com/mitrofmep}
+    {\underline{github}} $  $
+    \faIcon{linkedin}
+    \href{https://linkedin.com/in/mitrofmep}
+    {\underline{in/mitrofmep}} $  $
+    \faIcon{telegram}
+    \href{https://t.me/mitrofmep}
+    {\underline{mitrofmep}} $  $
+    \faIcon{code}
+    \href{https://leetcode.com/mitrofmep/}
+    {\underline{leetcode/mitrofmep}} $  $
+    \faIcon{envelope}
+    \href{mailto:mitrofmep@gmail.com}
+    {\underline{mitrofmep@gmail.com}}
+\end{center}
+
+% -------------------- EDUCATION --------------------
+\section{Образование}
+  \resumeSubHeadingListStart
+  
+    \resumeSubheading
+      {Университет ИТМО}{06/2026}
+      {Аспирантура - Информационные Технологии и Телекоммуникации}{}
+
+    \resumeSubheading
+      {СПбГАСУ}{07/2022}
+      {Магистратура, Бакалавриат - Инженерное Проектирование}{}
+
+
+  \resumeSubHeadingListEnd
+
+% -------------------- SKILLS --------------------
+\section{Навыки}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-1pt]
+    \small{
+        \item Java Core, OOP, Collections, Multithreading, Stream API | Spring Core, Boot, MVC, Security, Data, WebFlux\\
+        \item Hibernate ORM | JDBC | PostgreSQL, MySQL, H2 | Maven/Gradle | Docker | Gitlab CI/CD, Runner | Linux \\
+        \item REST | Swagger | JUnit | Mockito | Bash | Liquibase \\
+    }
+\end{itemize}
+
+% -------------------- PROJECTS --------------------
+\section{Опыт}
+    \resumeSubHeadingListStart
     
-    \begin{tablist}
-      \item[Ph.D.] \tab{}CSE, New Mexico Institute of Mining and Technology, Socorro, USA, 2020-2023
-      \item[M.S.] \tab{}CSE, New Mexico Institute of Mining and Technology, Socorro, USA, 2018-2020
-      \item[B.S.] \tab{}CSE, New Mexico Institute of Mining and Technology, Socorro, USA, 2015-2017
-      \item[B.E.] \tab{}Software Engineering, Yangtze University, Jingzhou, China, 2012-2015
-    \end{tablist}
+        \resumeProjectHeading
+        {\textbf{Yandex} $|$ \footnotesize\emph{Стажёр-разработчик}}{\footnotesize\emph{Сербия, Белград} $|$ {06/2023 - 09/2023}}
+        \resumeItemListStart
+            \resumeItem{Работал в команде по созданию MVP REST-приложения для интеграции в существующий сервис Яндекса.}
+            \resumeItem{Внёс ключевые архитектурные изменения в модуль подбора рекомендаций, координировал их с разработчиками из других команд, интегрировал API смежных сервисов.}
+            \resumeItem{Разработал компоненты авторизации, обработки токенов и управления cookies.}
+            \resumeItem{Самостоятельно осуществлял настройку и поддержку CI/CD, проводил код-ревью, выполнял нагрузочное тестирование в облаке.}
+            \resumeItem{Выдал подробное API для команды фронтенда, работа превзошла ожидания и была высоко оценена}
+        \resumeItemListEnd
+
+        \resumeProjectHeading
+        {\textbf{FutureBIM} $|$ \footnotesize\emph{Разработчик}}
+        {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {05/2022 - наст.вр.}}
+        \resumeItemListStart
+            \resumeItem{Занимался разработкой и поддержкой внутреннего продукта компании для менеджмента BIM-проектирования - web-приложение на стеке Java, Spring, Hibernate, PostgreSQL, Thymeleaf.}
+            \resumeItem{Разработал интеграцию с Revit API, которая позволила ускорить ключевой флоу приложения на 30\%.}
+            \resumeItem{Тестировал плагины для ПО Autodesk на C\# и готовил документацию.}
+        \resumeItemListEnd
+
+        \resumeProjectHeading
+        {\textbf{Школа 21 - Сбербанк} $|$ \footnotesize\emph{"Бассейн" по Си}}
+        {\footnotesize\emph{Москва, Россия} $|$ {09/2021}}
+        \resumeItemListStart
+            \resumeItem{Успешно прошёл очный отборочный этап - месячный интенсив по алгоритмам на Си уровня easy/medium}
+        \resumeItemListEnd
+
+        \resumeProjectHeading
+        {\textbf{Бюро "Студия 44"} $|$ \footnotesize\emph{Главный специалист отдела цифровизации}}
+        {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {12/2020 - 07/2022}}
+        \resumeItemListStart
+            \resumeItem{С нуля внедрил технологии BIM-проектирования и обучил 35 человек, готовил инструкции, видеолекции}
+           \resumeItem{Написал несколько сложных скриптов по автоматизации проектирования, сократил время выполнения рутинных операций в несколько раз. Стек: Python, Dynamo, Bash} 
+        \resumeItemListEnd
     
-    \section*{Research Areas}
-    \begin{itemize}
-      \item Smart meter: building occupancy detection, socio-demographic info identification, energy theft detection, and load monitoring
-      \item Neural Architecture Search (NAS): multi-objective genetic algorithm, Bayesian optimization
-      \item Social computation: multi-modal language model method for rumor detection on social media
-      \item Computer Vision: plant leaf diseases detection and neural adversarial attack \& detection
-      \item Biomedical signal: sEMG-based hand gesture recognition and user authentication, EEG-based driving fatigue detection
-    \end{itemize}
-    
-    \section*{Publications}
-    \subsection*{Journal Articles}
-    \begin{tablist}
-        \item[2023] \tab{}\fullcite{qi2023deepsmi}
-        \item[2023] \tab{}\fullcite{li2023deeptpa}
-        \item[2022] \tab{}\fullcite{li2022new}
-        \item[2022] \tab{}\fullcite{qi2022novel} 
-        \item[2021] \tab{}\fullcite{luo2021deep}
-        \item[2021] \tab{}\fullcite{luo2021study}
-        \item[2018] \tab{}\fullcite{zamani2018patterns}
-        \item[2015] \tab{}\fullcite{li2015research}
-    \end{tablist}
+          
+    \resumeSubHeadingListEnd
 
-    \subsection*{Conference Proceedings}
-    \begin{tablist}
-        \item[2022] \tab{}\fullcite{luo2022abode-net}
-        \item[2021] \tab{}\fullcite{li2021deep}
-    \end{tablist}
+% -------------------- EXPERIENCE --------------------
+\section{Проекты и Open Source}
+  \resumeSubHeadingListStart
 
-    % \section*{INVITED TALKS}
-    % \subsection*{Campus Talks}
+        \resumeProjectHeading
+            {\textbf{JBimer} $|$ \footnotesize\emph{\underline{\href{https://github.com/mitrofmep/JBimer}{https://github.com/mitrofmep/JBimer}}}\vspace{8pt}}{}          {\small{Многопользовательское веб-приложение для работы с коллизиями в Revit}} \\         
+            {\small{Stack: Java 11, Spring (Core, MVC, Security, Data, Boot), Maven, PostgreSQL, Hibernate, JUnit}}
 
-    \section*{Conference Activity}
-    \begin{tablist}
-        \item[2022] \tab{}The 7th International Conference on Smart Computing and Communication (SmartCom 2022), New York, USA
-        \item[2022] \tab{}NSF EPSCoR Workshop on Artificial Intelligence \& No-Boundary Thinking, Little Rock, Arkansa
-    \end{tablist}
 
-    \section*{Awards}
-    \subsection*{Awards and Honors}
-    \begin{tablist}
-        \item[2022] \tab{}Best Student Paper Award, SmartCom2022
-        \item[2022] \tab{}First Place Graduate Poster Award, New Mexico Research Symposium (NMRS)
-        \item[2022] \tab{}First Place Poster Winner, NM SMART Grid Center All Hands Meeting
-        \item[2022] \tab{}Second Place Graduate Poster Award, NMT Student Research Symposium
-    \end{tablist}
 
-    \section*{Teaching}
-    \begin{tablist}
-        \item[2022 Summer] \tab{}Introductory-level Python course, Upward Bound Math and Science
-        \item[2020-2022] \tab{}Compiler Writing Lab
-        \item[2018-2022] \tab{}Teaching Assistant: Computer Network, Operating System, 
-    \end{tablist}
+        \resumeProjectHeading
+            {\textbf{Yandex.Lavka REST API Service} $|$ \footnotesize\emph{\underline{\href{https://github.com/mitrofmep/Yandex-REST-API-Delivery}{https://github.com/mitrofmep/Yandex-REST-API-Delivery}}}\vspace{8pt}}{}          
+            {\small{REST-API сервис курьерской доставки - отборочное задание для \textbf{Школы бэкенд-разработки}}} \\         
+            {\small{Stack: Java 17, Docker, Gradle, Spring Boot, OpenAPI, Swagger, Resilience4J, PostgreSQL, Hibernate, JUnit}}
 
-    \section*{Service}
-    \subsection*{Academic Journal and Conference Peer Review}
-    \begin{itemize}
-        \item IEEE Wireless Communications and Networking Conference (WCNC)
-        \item Scientific Reports
-        \item Knowledge-Based Systems
-        \item PeerJ Computer Science
-        \item Journal of King Saud University - Computer and Information Sciences 
-        \item The 36th ACM/SIGAPP Symposium On Applied Computing
-    \end{itemize}
+        \resumeProjectHeading
+            {\textbf{OCR Telegram Bot} $|$ \footnotesize\emph{\underline{\href{https://github.com/mitrofmep/OCR-Telegram-Bot}{https://github.com/mitrofmep/OCR-Telegram-Bot}}}\vspace{8pt}}{}          
+            {\small{Телеграм-бот для распознавания символов из изображения}} \\  
+            {\small{Stack: Java 11, Spring Boot, Linux, Tesseract, Heroku}}
 
-    \section*{Research Labs and Assistantship}
-    \begin{tablist}
-        \item[2020-Now] \tab{}Research assistant at Human-Centered Computing and Security Lab, NMT
-        \item[2019-2021] \tab{}Graduate Assistant for REU in Cybersecurity, NMT
-        \item[2018-2020] \tab{}Research assistant at Sensor Security, Neural Network Lab, NMT
-        \item[2017 Summer] \tab{}Research assistant on optimization of twice-differetiable non-convex function
-        \item[2016-2017] \tab{}Robotics Lab Research, NMT
-    \end{tablist}
+        \resumeProjectHeading
+{\textbf{Open Source Contributions}\\
+\footnotesize\emph{\underline{\href{https://github.com/line/armeria/commits?author=mitrofmep}{https://github.com/line/armeria/commits?author=mitrofmep}}}\vspace{1pt}\\
+\footnotesize\emph{\underline{\href{https://github.com/opensearch-project/OpenSearch/commits?author=mitrofmep}{https://github.com/opensearch-project/OpenSearch/commits?author=mitrofmep}}}\vspace{1pt}\\
+\footnotesize\emph{\underline{\href{https://github.com/crowdin/crowdin-api-client-java/commits?author=mitrofmep}{https://github.com/crowdin/crowdin-api-client-java/commits?author=mitrofmep}}}\vspace{1pt}}
+{}
 
-    \section*{Certificates}
-    \begin{tablist}
-        % \item[2022] \tab{}Graduate Certificate in Cybersecurity
-        \item[2022] \tab{}Intel AI Analytics Toolkit Workshop
-        \item[2014] \tab{}IBM Academic Initiative Senior Software Development Engineer
-    \end{tablist}
 
-    \section*{Professional Employment}
-    \begin{tablist}
-        \item[2018] \tab{}C++ Development, Zhejiang Guozi Robotics, Hangzhou, China
-    \end{tablist}
+        
 
-    \section*{Skills}
-    \begin{tablist}
-        \item[Programming] \tab{}Python, C/C++, C\#, Java, JS, LaTex, Matlab
-        \item[Web] \tab{}\tab{}Flask, Bootstrap
-        \item[Deep Learning] \tab{}PyTorch, TensorFlow
-    \end{tablist}
+          
+    \resumeSubHeadingListEnd 
 
 \end{document}
