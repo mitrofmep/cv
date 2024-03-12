@@ -95,136 +95,86 @@
 
 \setlength{\footskip}{4.08003pt}
 
-% -------------------- START OF DOCUMENT --------------------
+
 \begin{document}
 
-% -------------------- HEADING--------------------
 \begin{flushright}
   \vspace{-4pt}
   \color{gray}
   \item
 \end{flushright}
 
+% -------------------- HEADING--------------------
 \vspace{-7pt}
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
 
-\begin{center}
-\vspace{-7pt}
-    \textbf{\Huge \scshape Валентин Митрофанов} \\ \vspace{8pt}
-    \small 
-    \faIcon{github}
-    \href{https://github.com/mitrofmep}
-    {\underline{github}} $  $
-    \faIcon{linkedin}
-    \href{https://linkedin.com/in/mitrofmep}
-    {\underline{in/mitrofmep}} $  $
-    \faIcon{telegram}
-    \href{https://t.me/mitrofmep}
-    {\underline{mitrofmep}} $  $
-    \faIcon{code}
-    \href{https://leetcode.com/mitrofmep/}
-    {\underline{leetcode/mitrofmep}} $  $
-    \faIcon{envelope}
-    \href{mailto:mitrofmep@gmail.com}
-    {\underline{mitrofmep@gmail.com}}
-\end{center}
+  \textbf{\href{https://github.com/mitrofmep/}{\Huge Валентин Митрофанов}} & \faIcon{github}\href{https://github.com/mitrofmep}{{ github.com/mitrofmep}} $  $\\
+  {} & \faIcon{linkedin}\href{https://linkedin.com/in/mitrofmep}{{ linkedin.com/in/mitrofmep}} $  $ \\
+ \small{Email} : \href{mailto:mitrofmep@gmail.com}{mitrofmep@gmail.com} & \faIcon{code}\href{https://leetcode.com/mitrofmep/}{{ leetcode.com/mitrofmep}} $  $\\
+  \small{Mobile} : +7-993-596-4909 & {} $  $ \\
+  \faIcon{telegram}\small{ Telegram} : \href{https://t.me/mitrofmep}{{@mitrofmep}} & {} $  $ \\
+  
+\end{tabular*}
+
+
+% -------------------- PROJECTS --------------------
+\section{Опыт}
+    \resumeSubHeadingListStart
+
+        \resumeProjectHeading
+        {\textbf{СБЕР} $|$ {Java-разработчик - \emph{Полный день}}}
+        {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {10/2023 - наст.вр.}}
+        \resumeItemListStart
+            \resumeItem{Разрабатывал бэкенд приложения для сотрудников банка. Поддерживали существующую платформу - это многомодульный maven-проект, по сути "фабрика данных" для нескольких смежных команд. Занимался миграцией легаси монолита на микросервисы. Работали по Agile.}
+            \resumeItem{Рефакторил существующие модули, добавлял новые фичи, оптимизировал запутанную бизнес-логику. При переносе на микросервисы переписывал бóльшую часть кода, т.к. значительно декомпозировали монолит. Маппинг и работу с DAO менял на асинхронные обращения к микросервисам через WebClient. С нуля разработал модули интеграционного тестирования.}
+            \resumeItem{Раскатывал сборки в Jenkins, артефакты хранили в Nexus, код проверяли в SonarQube, занимался сборкой релизов, раскатывал новые микросервисы в OpenShift(Kubernetes), писал шедулеры.}
+            \resumeItem{Проводил код ревью, дополнял бэклог, участвовал в планировании задач, груминге, демо.}
+            \resumeItem{\texttt{Стек: Java 8, 11, 17; Spring: Boot, Data, WebFlux; Maven, Nexus, Hibernate 6, PostgreSQL, CriteriaAPI, Liquibase, Kafka, GraphQL, MapStruct, JUnit, Mockito, BitBucket, Jenkinks CI/CD, SonarQube, OpenShift, WildFly}}
+
+        \resumeItemListEnd
+    
+        \resumeProjectHeading
+        {\textbf{Яндекс} $|$ {Java-разработчик - \emph{Проектная работа}}}{\footnotesize\emph{Сербия, Белград} $|$ {06/2023 - 10/2023}}
+        \resumeItemListStart
+            \resumeItem{Работал в команде по созданию REST-приложения для интеграции с существующим сервисом Яндекса. Необходимо было разработать MVP, всю архитектуру и процессы выстраивали с нуля.}
+            \resumeItem{Внёс ключевые оптимизационные изменения в существующий модуль подбора рекомендаций, координировал их с разработчиками из смежных команд, интегрировал API сторонних сервисов.}
+            \resumeItem{Разработал компоненты авторизации, обработки токенов и управления cookies.}
+            \resumeItem{Самостоятельно осуществлял настройку и поддержку CI/CD, использовали Gitlab Runner, настраивал весь пайплайн раскатки, проводил код ревью, выполнял нагрузочное тестирование в облаке.}
+            \resumeItem{Контролировал выдачу подробного API для команд фронта и мобилки.}
+            \resumeItem{\texttt{Стек: Java, Spring: Boot, Webflux; Maven, JUnit, Mockito, Jacoco, Redis, Resilience4j, GitLab CI/CD, Docker}}
+        \resumeItemListEnd
+
+        \resumeProjectHeading
+        {\textbf{\href{https://futurebim.ru/ru}{FutureBIM}} $|$ {Разработчик - \emph{Полный день}}}
+        {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {09/2021 - 05/2023}}
+        \resumeItemListStart
+            \resumeItem{Занимался поддержкой внутреннего продукта компании для менеджмента BIM-проектирования: монолитное web-приложение, работало через шаблонизатор, общалось со сторонним десктопным софтом через XML. Написал много сложной бизнес-логики, связанной с преобразованием данных из разных программ и API онлайн-сервисов, получением и визуализацией статистики.}
+            \resumeItem{Разработал модуль интеграции с софтом от Autodesk, которая позволила ускорить ключевой флоу приложения на 30\%. Для этого разбирался в легаси модулях на C\# и LISP. Готовил документацию.}
+            \resumeItem{Проводил собеседования, онбординги, помогал с выстраиванием процессов в команде, проводил code review, писал скрипты по автоматизации проектирования на Python, Bash}
+            \resumeItem{\texttt{Стек: Java, Spring: Boot, MVC, Security; Gradle, Hibernate, PostgreSQL, Thymeleaf, JAXB, Jsoup, Jackson, Apache POI, Docker, GitHub}}
+
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
 
 % -------------------- EDUCATION --------------------
 \section{Образование}
   \resumeSubHeadingListStart
   
-    \resumeSubheading
-      {Университет ИТМО}{06/2026}
-      {Аспирантура - Информационные Технологии и Телекоммуникации}{}
-
-    \resumeSubheading
-      {СПбГАСУ}{07/2022}
-      {Магистратура, Бакалавриат - Инженерное Проектирование}{}
-
+    \resumeProjectHeading
+      {\textbf{Университет ИТМО}}
+      {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {2023}}
+     \resumeItemListStart
+      \resumeItem{{Аспирантура - Факультет программной инженерии и компьютерной техники}}{}
+\resumeItemListEnd
 
   \resumeSubHeadingListEnd
 
 % -------------------- SKILLS --------------------
 \section{Навыки}
-\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-1pt]
     \small{
-        \item Java Core, OOP, Collections, Multithreading, Stream API | Spring Core, Boot, MVC, Security, Data, WebFlux\\
-        \item Hibernate ORM | JDBC | PostgreSQL, MySQL, H2 | Maven/Gradle | Docker | Gitlab CI/CD, Runner | Linux \\
-        \item REST | Swagger | JUnit | Mockito | Bash | Liquibase \\
+        Java 8, 11, 17, Core, OOP, Collections, Multithreading, Stream API | Spring Core, Boot, MVC, Security, Data, WebFlux | Hibernate ORM | JDBC | PostgreSQL, MySQL, H2 | Criteria API | MapStruct | Maven/Gradle | Sonatype Nexus | Docker Gitlab CI/CD, Runner | Jenkins | SonarQube | OpenShift | BitBucket | Linux | REST | Swagger | JUnit | Mockito | Bash | Liquibase 
     }
-\end{itemize}
 
-% -------------------- PROJECTS --------------------
-\section{Опыт}
-    \resumeSubHeadingListStart
+
     
-        \resumeProjectHeading
-        {\textbf{Yandex} $|$ \footnotesize\emph{Стажёр-разработчик}}{\footnotesize\emph{Сербия, Белград} $|$ {06/2023 - 09/2023}}
-        \resumeItemListStart
-            \resumeItem{Работал в команде по созданию MVP REST-приложения для интеграции в существующий сервис Яндекса.}
-            \resumeItem{Внёс ключевые архитектурные изменения в модуль подбора рекомендаций, координировал их с разработчиками из других команд, интегрировал API смежных сервисов.}
-            \resumeItem{Разработал компоненты авторизации, обработки токенов и управления cookies.}
-            \resumeItem{Самостоятельно осуществлял настройку и поддержку CI/CD, проводил код-ревью, выполнял нагрузочное тестирование в облаке.}
-            \resumeItem{Выдал подробное API для команды фронтенда, работа превзошла ожидания и была высоко оценена}
-        \resumeItemListEnd
-
-        \resumeProjectHeading
-        {\textbf{FutureBIM} $|$ \footnotesize\emph{Разработчик}}
-        {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {05/2022 - наст.вр.}}
-        \resumeItemListStart
-            \resumeItem{Занимался разработкой и поддержкой внутреннего продукта компании для менеджмента BIM-проектирования - web-приложение на стеке Java, Spring, Hibernate, PostgreSQL, Thymeleaf.}
-            \resumeItem{Разработал интеграцию с Revit API, которая позволила ускорить ключевой флоу приложения на 30\%.}
-            \resumeItem{Тестировал плагины для ПО Autodesk на C\# и готовил документацию.}
-        \resumeItemListEnd
-
-        \resumeProjectHeading
-        {\textbf{Школа 21 - Сбербанк} $|$ \footnotesize\emph{"Бассейн" по Си}}
-        {\footnotesize\emph{Москва, Россия} $|$ {09/2021}}
-        \resumeItemListStart
-            \resumeItem{Успешно прошёл очный отборочный этап - месячный интенсив по алгоритмам на Си уровня easy/medium}
-        \resumeItemListEnd
-
-        \resumeProjectHeading
-        {\textbf{Бюро "Студия 44"} $|$ \footnotesize\emph{Главный специалист отдела цифровизации}}
-        {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {12/2020 - 07/2022}}
-        \resumeItemListStart
-            \resumeItem{С нуля внедрил технологии BIM-проектирования и обучил 35 человек, готовил инструкции, видеолекции}
-           \resumeItem{Написал несколько сложных скриптов по автоматизации проектирования, сократил время выполнения рутинных операций в несколько раз. Стек: Python, Dynamo, Bash} 
-        \resumeItemListEnd
-    
-          
-    \resumeSubHeadingListEnd
-
-% -------------------- EXPERIENCE --------------------
-\section{Проекты и Open Source}
-  \resumeSubHeadingListStart
-
-        \resumeProjectHeading
-            {\textbf{JBimer} $|$ \footnotesize\emph{\underline{\href{https://github.com/mitrofmep/JBimer}{https://github.com/mitrofmep/JBimer}}}\vspace{8pt}}{}          {\small{Многопользовательское веб-приложение для работы с коллизиями в Revit}} \\         
-            {\small{Stack: Java 11, Spring (Core, MVC, Security, Data, Boot), Maven, PostgreSQL, Hibernate, JUnit}}
-
-
-
-        \resumeProjectHeading
-            {\textbf{Yandex.Lavka REST API Service} $|$ \footnotesize\emph{\underline{\href{https://github.com/mitrofmep/Yandex-REST-API-Delivery}{https://github.com/mitrofmep/Yandex-REST-API-Delivery}}}\vspace{8pt}}{}          
-            {\small{REST-API сервис курьерской доставки - отборочное задание для \textbf{Школы бэкенд-разработки}}} \\         
-            {\small{Stack: Java 17, Docker, Gradle, Spring Boot, OpenAPI, Swagger, Resilience4J, PostgreSQL, Hibernate, JUnit}}
-
-        \resumeProjectHeading
-            {\textbf{OCR Telegram Bot} $|$ \footnotesize\emph{\underline{\href{https://github.com/mitrofmep/OCR-Telegram-Bot}{https://github.com/mitrofmep/OCR-Telegram-Bot}}}\vspace{8pt}}{}          
-            {\small{Телеграм-бот для распознавания символов из изображения}} \\  
-            {\small{Stack: Java 11, Spring Boot, Linux, Tesseract, Heroku}}
-
-        \resumeProjectHeading
-{\textbf{Open Source Contributions}\\
-\footnotesize\emph{\underline{\href{https://github.com/line/armeria/commits?author=mitrofmep}{https://github.com/line/armeria/commits?author=mitrofmep}}}\vspace{1pt}\\
-\footnotesize\emph{\underline{\href{https://github.com/opensearch-project/OpenSearch/commits?author=mitrofmep}{https://github.com/opensearch-project/OpenSearch/commits?author=mitrofmep}}}\vspace{1pt}\\
-\footnotesize\emph{\underline{\href{https://github.com/crowdin/crowdin-api-client-java/commits?author=mitrofmep}{https://github.com/crowdin/crowdin-api-client-java/commits?author=mitrofmep}}}\vspace{1pt}}
-{}
-
-
-        
-
-          
-    \resumeSubHeadingListEnd 
-
 \end{document}
