@@ -3,7 +3,7 @@
 % Author : Valentin Mitrofanov
 %------------------------
 
-\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[english,russian]{babel}
@@ -20,6 +20,7 @@
 \usepackage{tabularx}
 \usepackage{xcolor}
 \usepackage{fontawesome5}
+\usepackage[]{mdframed}
 
 \input{glyphtounicode}
 
@@ -120,39 +121,46 @@
 % -------------------- PROJECTS --------------------
 \section{Опыт}
     \resumeSubHeadingListStart
-
         \resumeProjectHeading
-        {\textbf{СБЕР} $|$ {Java-разработчик - \emph{Полный день}}}
+        {\textbf{Сбер} $|$ {Java-разработчик - \emph{Полный день}}}
         {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {10/2023 - наст.вр.}}
+        \begin{mdframed}
+\footnotesize\textbf{Стек: Java 8, 11, 17 / Spring: Boot Data, WebFlux, AOP / Apache Maven, Sonatype Nexus / Hibernate, PostgreSQL, CriteriaAPI, MapStruct, Liquibase / Kafka, GraphQL / JUnit, Mockito / BitBucket, Jenkinks CI/CD, SonarQube, OpenShift, WildFly}
+\end{mdframed}
         \resumeItemListStart
-            \resumeItem{Разрабатывал бэкенд приложения для сотрудников банка. Поддерживали существующую платформу - это многомодульный maven-проект, по сути "фабрика данных" для нескольких смежных команд. Занимался миграцией легаси монолита на микросервисы. Работали по Agile.}
-            \resumeItem{По монолиту: Рефакторил существующие модули, добавлял новые фичи, оптимизировал запутанную бизнес-логику, писал шедулеры. Раскатывал сборки в Jenkins, занимался сборкой релизов.}
-            \resumeItem{По миграции: При переносе на микросервисы переписывал бóльшую часть кода, т.к. значительно декомпозировали монолит. Менял маппинг и работу с DAO на асинхронное взаимодействие с другими микросервисами. Прошли весь цикл миграции с нуля и до выхода в прод, создали легко масштабируемую архитектуру. Писал код, который коллеги брали за основу для других микросервисов. Разработал модули интеграционного тестирования и хэндлеров.}
-            \resumeItem{Артефакты хранили в Nexus, код проверяли в SonarQube,  раскатывал новые микросервисы в OpenShift(Kubernetes), проводил код ревью, дополнял бэклог, участвовал в планировании, груминге, демо.}
-            \resumeItem{\texttt{Стек: Java 8, 11, 17; Spring: Boot, Data, WebFlux; Maven, Nexus, Hibernate 6, PostgreSQL, CriteriaAPI, Liquibase, Kafka, GraphQL, MapStruct, JUnit, Mockito, BitBucket, Jenkinks CI/CD, SonarQube, OpenShift, WildFly}}
-
+            \resumeItem{Разрабатывал бэкенд высоконагруженного приложения для сотрудников службы комплаенс банка. Поддерживали существующую платформу - многомодульный maven-проект, по сути "фабрика данных" для нескольких смежных команд. Занимался миграцией легаси монолита на микросервисы. Работали по Agile.}
+            \resumeItem{По монолиту: Рефакторинг существующих сервисов, добавлял новые фичи, оптимизировал запутанную бизнес-логику, писал шедулеры, скрипты миграции БД (liquibase).}
+            \resumeItem{Занимался сборкой релизов, деплоем и развёртыванием в Jenkins}
+            \resumeItem{По миграции: При переносе на микросервисы переписывал бóльшую часть кодовой базы, т.к. значительно декомпозировали монолит и меняли бизнес-логику. Разработал модули асинхронного взаимодействия с другими микросервисами. Прошёл весь цикл миграции с нуля до выхода в прод, участвовал в разработке легко масштабируемой архитектуры. Писал код, который служил базой для миграции других микросервисов. }
+            \resumeItem{Разработал универсальные расширяемые модули интеграционного тестирования и хэндлеров ответов.}
+            \resumeItem{Упорядочил версионирование артефактов в Nexus, уменьшал тех.долг по SonarQube,  раскатывал новые микросервисы в OpenShift(Kubernetes).}
+            \resumeItem{Проводил код ревью, дополнял бэклог, участвовал в планировании, груминге, демо \\
+            (Jira + BitBucket, Confluence).}
         \resumeItemListEnd
-    
         \resumeProjectHeading
         {\textbf{Яндекс} $|$ {Java-разработчик - \emph{Проектная работа}}}{\footnotesize\emph{Сербия, Белград} $|$ {06/2023 - 10/2023}}
+                \begin{mdframed}
+\footnotesize\textbf{Стек: Java 11 / Spring Boot, Webflux / Apache Maven / JWT, Resilience4j / JUnit, Mockito, Jacoco / Docker, GitLab, GitLab CI, Runner / Swagger UI (OpenAPI)}
+\end{mdframed}
         \resumeItemListStart
-            \resumeItem{Работал в команде по созданию REST-приложения для интеграции с существующим сервисом Яндекса. Необходимо было разработать MVP. Всю архитектуру и процессы выстраивали с нуля.}
-            \resumeItem{Внёс ключевые оптимизационные изменения в существующий модуль подбора рекомендаций, координировал их с разработчиками из смежных команд, интегрировал API сторонних сервисов.}
+            \resumeItem{Работал в команде по созданию REST-приложения для интеграции с существующим сервисом Яндекса. Разработали MVP. Всю архитектуру и процессы выстраивали с нуля.}
+            \resumeItem{Внёс ключевые оптимизационные изменения в существующий модуль подбора рекомендаций, координировал их с разработчиками из смежных команд, интегрировал API сторонних сервисов. }
             \resumeItem{Разработал компоненты авторизации, обработки токенов и управления cookies.}
-            \resumeItem{Самостоятельно осуществлял настройку и поддержку CI/CD, использовали Gitlab Runner, настраивал весь пайплайн раскатки, проводил код ревью, выполнял нагрузочное тестирование в облаке.}
-            \resumeItem{Контролировал выдачу подробного API для команд фронта и мобилки.}
-            \resumeItem{\texttt{Стек: Java, Spring: Boot, Webflux; Maven, JUnit, Mockito, Jacoco, GitLab CI/CD, Docker}}
+            \resumeItem{Самостоятельно осуществлял настройку и поддержку CI/CD, использовали Gitlab Runner, настраивал весь пайплайн раскатки, проводил код ревью.}
+            \resumeItem{Проводил облачное нагрузочное тестирование. Контролировал выдачу подробного API для команд фронта и мобилки.}
         \resumeItemListEnd
-
+\newpage
+$ $
         \resumeProjectHeading
         {\textbf{\href{https://futurebim.ru/ru}{FutureBIM}} $|$ {Разработчик - \emph{Полный день}}}
         {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {09/2021 - 05/2023}}
+                        \begin{mdframed}
+\footnotesize\textbf{Стек: Java, Spring: Boot, MVC, Security; Gradle, Hibernate, PostgreSQL, Thymeleaf, JAXB, Jsoup, Jackson, Apache POI, Docker, GitHub}
+\end{mdframed}
         \resumeItemListStart
             \resumeItem{Занимался поддержкой внутреннего продукта компании для менеджмента BIM-проектирования: монолитное web-приложение, работало через шаблонизатор, общалось со сторонним десктопным софтом через XML. Написал много сложной бизнес-логики, связанной с преобразованием данных из разных программ и API онлайн-сервисов, получением и визуализацией статистики.}
             \resumeItem{Разработал модуль интеграции с софтом от Autodesk, которая позволила ускорить ключевой флоу приложения на 30\%. Для этого разбирался в легаси модулях на C\# и LISP. Готовил документацию.}
-            \resumeItem{Проводил собеседования, онбординги, помогал с выстраиванием процессов в команде, проводил code review, писал скрипты по автоматизации проектирования на Python, Bash}
-            \resumeItem{\texttt{Стек: Java, Spring: Boot, MVC, Security; Gradle, Hibernate, PostgreSQL, Thymeleaf, JAXB, Jsoup, Jackson, Apache POI, Docker, GitHub}}
-
+            \resumeItem{Проводил собеседования, онбординги, помогал с выстраиванием процессов в команде, проводил код ревью, писал скрипты по автоматизации проектирования на Python, Bash}
         \resumeItemListEnd
     \resumeSubHeadingListEnd
 
@@ -163,18 +171,22 @@
     \resumeProjectHeading
       {\textbf{Университет ИТМО}}
       {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {2023}}
-     \resumeItemListStart
-      \resumeItem{{Аспирантура - Факультет программной инженерии и компьютерной техники}}{}
+        \resumeItemListStart
+            \resumeItem{{Аспирантура - Факультет программной инженерии и компьютерной техники}} \\
+            \resumeItem{\textit{Тема кандидатской диссертации: Методы визуализации для получения совокупной оценки проектных решений}}
+        \resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{СПбГАСУ}}
+      {\footnotesize\emph{Санкт-Петербург, Россия} $|$ {2016-2022}}
+        \resumeItemListStart
+            \resumeItem{{Бакалавриат, Магистратура - Инженерное проектирование}}
 \resumeItemListEnd
 
   \resumeSubHeadingListEnd
 
 % -------------------- SKILLS --------------------
 \section{Навыки}
-    \small{
-        Java 8, 11, 17, Core, OOP, Collections, Multithreading, Stream API | Spring Core, Boot, MVC, Security, Data, WebFlux | Hibernate ORM | JDBC | PostgreSQL, MySQL, H2 | Criteria API | MapStruct | Maven/Gradle | Sonatype Nexus | Docker Gitlab CI/CD, Runner | Jenkins | SonarQube | OpenShift | BitBucket | Linux | REST | Swagger | JUnit | Mockito | Bash | Liquibase 
-    }
-
-
-    
+        \begin{mdframed}
+\footnotesize\textbf{Java 8, 11, 17, Core, OOP, Collections, Multithreading, Stream API / Spring Core, Boot, MVC, Security, Data, WebFlux, AOP / Hibernate ORM, JDBC, PostgreSQL, MySQL, H2, CriteriaAPI, MapStruct, Liquibase / Apache Maven, Gradle,  Sonatype Nexus / JUnit, Mockito, JaCoCo / GitHub, Docker, Gitlab CI/CD, Runner, BitBucket, Jenkins, SonarQube / OpenShift, Kubernetes / Linux, Bash / REST, Swagger UI (OpenAPI) }
+\end{mdframed}   
 \end{document}
